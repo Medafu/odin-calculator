@@ -18,16 +18,15 @@ body {
     background-color: #570A57;
     border-radius: 5px;
     padding: 5px;
-    min-width: 500px;
     gap: 10px;
 }
 
 .display {
+    font-size: 20px;
     background-color: #F806CC;
     color: rgba(0, 0, 0, 0.671);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    word-wrap: break-word;
+    word-break: break-all;
     min-height: 50px;
     padding: 0px 5px;
 }
