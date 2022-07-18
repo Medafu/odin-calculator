@@ -11,12 +11,12 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num1 / num2
+    if (num2 == 0) {
+
+    }
 }
 
 function operate(num1, num2, operator) {
-    num1 = parseInt(num1)
-    num2 = parseInt(num2)
     switch (operator) {
         case '+':
             return add(num1, num2)
@@ -25,7 +25,7 @@ function operate(num1, num2, operator) {
         case '*':
             return multiply(num1, num2)
         case '/':
-            divide(num1, num2)
+            return divide(num1, num2)
     }
 }
 
@@ -43,6 +43,27 @@ buttons.forEach(button => {
     })
 })
 
+let dec = document.querySelector(".dec")
+dec.addEventListener('click', () => {
+    let arr = display.textContent.split(" ")
+    let current = ""
+    if (arr.length == 3) {
+        if (arr[2] == '') {
+            return
+        }
+
+        current = arr[2]
+    } else {
+        current = display.textContent
+    }
+
+    if (current.includes(".")) {
+        return
+    } else {
+        return display.textContent += "."
+    }
+})
+
 let clear = document.querySelector(".clear")
 clear.addEventListener('click', () => {
     display.textContent = "0"
@@ -53,9 +74,15 @@ operators.forEach(e => {
     e.addEventListener('click', e => {
         let eval = display.textContent.split(" ")
         if (eval.length == 3) {
-            let first = parseInt(eval[0])
+            if (eval[2] == "") {
+                let arr = display.textContent.split("")
+                arr[arr.length - 2] = e.target.textContent
+                return display.textContent = arr.join("")
+            }
+
+            let first = parseFloat(eval[0])
             let operator = eval[1]
-            let second = parseInt(eval[2])
+            let second = parseFloat(eval[2])
             let result = operate(first, second, operator)
             return display.textContent = result + " " + e.target.textContent + " "
         }
@@ -65,5 +92,26 @@ operators.forEach(e => {
 
 let equal = document.querySelector("#equal")
 equal.addEventListener('click', e => {
-    
+    let eval = display.textContent.split(" ")
+    if (eval.length == 3) {
+        if (eval[2] == "") {
+            return
+        }
+        
+        let first = parseFloat(eval[0])
+        let operator = eval[1]
+        let second = parseFloat(eval[2])
+        let result = operate(first, second, operator)
+        return display.textContent = result
+    }
+})
+
+let del = document.querySelector(".del")
+del.addEventListener('click', () => {
+    let text = display.textContent
+    if (text[text.length - 1] === "" || text[text.length - 1] === " ") {
+        return
+    }
+
+    display.textContent = text.slice(0, -1)
 })

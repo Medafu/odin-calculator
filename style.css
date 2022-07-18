@@ -14,20 +14,21 @@ body {
 
 .calculator {
     display: flex;
+    width: 510px;
+    max-width: 510px;
     flex-direction: column;
     background-color: #570A57;
     border-radius: 5px;
-    padding: 5px;
+    padding: 15px;
     gap: 10px;
 }
 
 .display {
-    font-size: 20px;
+    font-size: 25px;
     background-color: #F806CC;
     color: rgba(0, 0, 0, 0.671);
-    word-wrap: break-word;
-    word-break: break-all;
     min-height: 50px;
+    word-break: break-all;
     padding: 0px 5px;
 }
 
@@ -38,8 +39,20 @@ body {
     gap: 10px;
 }
 
-.btn {
+.func {
+    background-color: #760b54;
+    grid-column: span 2;
+}
+
+.num, #equal, .dec {
     background-color: #A91079;
+}
+
+.op {
+    background-color:#8f1d8f;
+}
+
+.btn {
     min-height: 50px;
     display: flex;
     align-items: center;
@@ -50,12 +63,13 @@ body {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    border-radius: 5px;
 }
 
 .btn:hover {
-    background-color: #8c0d64;
+    filter: brightness(0.9);
 }
 
 .btn:active {
-    background-color: #750b53;
+    filter:brightness(0.8)
 }
