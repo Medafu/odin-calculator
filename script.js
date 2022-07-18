@@ -1,3 +1,6 @@
+let display = document.querySelector(".display")
+display.textContent = "0"
+
 function add(num1, num2) {
     return num1 + num2
 }
@@ -12,8 +15,10 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if (num2 == 0) {
-
+        return display.textContent = "Error!"
     }
+    
+    return num1 / num2
 }
 
 function operate(num1, num2, operator) {
@@ -28,9 +33,6 @@ function operate(num1, num2, operator) {
             return divide(num1, num2)
     }
 }
-
-let display = document.querySelector(".display")
-display.textContent = "0"
 
 let buttons = document.querySelectorAll(".num")
 buttons.forEach(button => {
